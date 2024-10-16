@@ -1,0 +1,111 @@
+body{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--main-font);
+  --main-text-size: 1.5rem;
+  --main-font: sans-serif;
+}
+
+/* Header */
+header{
+  width: clamp(500px, 100%, 1500px);
+}
+
+.header__wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+/* End of Header */
+
+/* Main Content */
+main{
+  width: clamp(500px, 100%, 1500px);
+}
+
+.input-wrapper, .new-List-Items-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Input and list items */
+.new-ToDo, .js-todo-input{
+  width: 1000px;
+  text-wrap: pretty;
+}
+
+.new-ToDo{
+  background-color: moccasin;
+}
+
+/* Date and list items shared design */
+.js-todo-input, .js-tododate-input{
+  border: none;
+  padding: 0;
+  outline: none;
+  border-bottom: 3px solid #ccc;
+}
+
+.new-ToDo, .new-Date, .new-DelBtn{
+  margin-top: 10px;
+}
+
+.new-ToDo, .new-Date, .js-todo-input, .js-tododate-input, .new-DelBtn, .js-add-btn{
+  height: 50px;
+  font-size: var(--main-text-size);
+  font-family: var(--main-font);
+  display: flex;
+  align-items: center;
+}
+
+.ToDoList, .ToDoDate{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Date entries */
+
+.js-tododate-input, .ToDoDate{
+  width: 200px;
+  font-size: var(--main-text-size);
+  font-family: var(--main-font);
+}
+
+.ToDoDate{
+  background-color: red;
+}
+
+.new-Date{
+  background-color: green;
+}
+
+/* Buttons */
+
+.new-DelBtn, .js-add-btn{
+  width: 120px;
+  justify-content: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fff
+}
+
+.js-add-btn{
+  background-color: #117061;
+}
+
+.new-DelBtn{
+  background-color: #ab0808;
+}
+
+.DeleteBtn{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* End of Main Content */
+

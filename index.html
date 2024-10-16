@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="../../CSS/EjerciciosJS/ToDoList.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoList Project</title>
+</head>
+<body>
+  <header>
+    <div class="header__wrapper">
+      <div>Yivy's To-do List</div>
+      <div>Go to bottom</div>
+    </div>
+  </header>
+  <main>
+    <h1>To-do List</h1>
+    <div class="input-wrapper">
+      <input class="js-todo-input" type="text" placeholder="To-do description (max. 80 characters)" maxlength="80">
+      <input class="js-tododate-input" type="date" >
+      <button class="js-add-btn" onclick="addToDo()">Add</button>
+    </div>
+    <div class="new-List-Items-wrapper">
+      <ul class="ToDoList"></ul>
+      <ul class="ToDoDate"></ul>
+      <div class="DeleteBtn"></div>
+    </div>
+  </main>
+
+  <script src="../../../Ejercicios JS/Principiante/ToDoList.js"></script>  
+</body>
+</html>
