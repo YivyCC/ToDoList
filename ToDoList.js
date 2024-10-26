@@ -1,53 +1,58 @@
-let arrayToDo = [];
-let arrayToDoDate = [];
-let newList = {
-  item:'',
-  date:'',
-  delBtn:'',
-};
+let arrayToDoList = [];
+let toDoHTML = '';
 
 function addToDo(){
-  arrayToDo.push(document.querySelector(".js-todo-input").value);
-  arrayToDoDate.push(document.querySelector(".js-tododate-input").value);
-  displayArray();
+  const htmlTask = document.querySelector(".js-todo-input");
+  const htmlDate = document.querySelector(".js-tododate-input");
+  const task = htmlTask.value;
+  const date = htmlDate.value;
+  arrayToDoList.push({task, date});
+  htmlDate.value = '';
+  htmlTask.value = '';
+  dispArray();
 }
 
-function displayArray(){
-  for(i=0; i<arrayToDo.length; i++){
-    newList.item = document.createElement("li");
-    newList.item.classList.add("new-ToDo");
-    newList.date = document.createElement("li");
-    newList.date.classList.add("new-Date");
-    newList.delBtn = document.createElement("button");
-    newList.delBtn.classList.add("new-DelBtn");
-    newList.item.textContent = `${arrayToDo[i]}`;
-    newList.date.textContent = `${arrayToDoDate[i]}`;
-    newList.delBtn.textContent = "Remove";
-  }  
-  document.querySelector(".ToDoList").append(newList.item);
-  if(document.querySelector(".js-tododate-input").value === ""){
-    newList.date.textContent = "No due date";
-    document.querySelector(".ToDoDate").append(newList.date);
-  }else{
-    document.querySelector(".ToDoDate").append(newList.date);
+function dispArray(){
+  for(i=0; i<arrayToDoList.length; i++){
+    const {task, date} = arrayToDoList[i];
+    if (date == ""){
+      const html = `
+        <div class="new-task-wrapper">
+          <div class="to-do-list">
+            <input type="checkbox" id="${i}" class="to-do-list__check">
+            <label class="to-do-text" for="${i}">${task}</label>
+          </div>
+          <div class="to-do-date">No due date</div>
+          <div class="del-btn-container">
+            <button class="delete-btn" onclick="
+              arrayToDoList.splice(${i}, 1);
+              dispArray();
+            ">Delete</button>
+          </div>
+        </div>
+      `;
+      toDoHTML += html;
+    } else{
+      const html = `
+        <div class="new-task-wrapper">
+          <div class="to-do-list">
+            <input type="checkbox" id="${i}" class="to-do-list__check">
+            <label class="to-do-text" for="${i}">${task}</label>
+          </div>
+          <div class="to-do-date">Due ${date}</div>
+          <div class="del-btn-container">
+            <button class="delete-btn" onclick="
+              arrayToDoList.splice(${i}, 1);
+              dispArray();
+            ">Delete</button>
+          </div>
+        </div>
+      `;
+      toDoHTML += html;
+    }    
   }
-  document.querySelector(".DeleteBtn").append(newList.delBtn);
-  document.querySelector(".js-todo-input").value = "";
-  document.querySelector(".js-tododate-input").value = "";
+  document.querySelector(".new-task").innerHTML = toDoHTML;
+  toDoHTML = '';
 }
-
-/* Metodo 2 de hacer lo mismo Pero no me salio XD
-function addToDo(){
-  arrayToDo.push(document.querySelector(".js-todo-input").value);
-  arrayToDoDate.push(document.querySelector(".js-tododate-input").value);
-  for(i=0; i<arrayToDo.length; i++){
-    const asd = arrayToDo[i];
-    const newListItem = `<li>${asd}</li>`;
-    auxvar += newListItem;
-  }  
-  document.querySelector(".ToDoList").innerHTML = auxvar;
-}*/
-
-
 
 
